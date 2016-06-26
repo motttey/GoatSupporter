@@ -1,0 +1,113 @@
+@media screen and (max-width: 800px) {
+   /* 表示領域が800px以上の場合に適用するスタイル */
+   span.navname { display:none; }
+}
+
+/* tooltip.jsのスタイルを上書き */
+.tooltip-inner {
+    background: #FA8072;
+    color: #ffffff;
+}
+.tooltip.top .tooltip-arrow {
+    border-top-color: #FA8072;
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: #FA8072;
+}
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #FA8072;
+}
+.tooltip.left .tooltip-arrow {
+    border-left-color: #FA8072;
+}
+
+/*ナビゲーションバーに対する書式*/
+i{
+    font-size: 1.3em;
+    color: inherit;
+}
+
+.navbar{
+    width:100%;
+    margin-bottom:0px;
+}
+.navber-collapse{
+    height: 0px;
+}
+.navbar .navbar-inner {
+    padding: 0;
+}
+ 
+.navbar .nav {
+    margin: 0;
+    display: table;
+    width: 100%;
+}
+ 
+.navbar .nav li {
+    display: table-cell;
+    float: none;
+    width:20%;
+}
+
+/* 枠線 */
+.navbar .nav li a {
+    color:#ffffff;
+    background:#5D4037; 
+    font-weight: bold;
+    text-align: center;
+    border-left: 1px solid rgba(255, 255, 255, .75);
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    
+    /*change navigation cell size*/
+    height:50px;
+    padding-top:12px;
+    padding-bottom:0px;
+}
+
+.nav:hover li:hover a:hover {
+    color:#212121;
+}
+.nav:hover li:focus a:focus {
+    color:#ffffff;
+}
+ 
+.navbar .nav li:last-child a {
+    border-right: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+/*ナビゲーションのフォントサイズを指定*/
+.navname{
+    font-size:15px;
+}
+
+.navbar-toggle {
+    display: none;
+}
+.collapse {
+    display: block;
+    border-color:transparent;
+}
+/* navbar-leftの場合はここをleftに変える */
+.navbar-right {
+    float: right;
+}
+.navbar-header {
+    float: left;
+}
+
+/*Bootstrapに上書きして左右のpaddingを消去*/
+.navbar-collapse{
+    padding-left:0px;
+    padding-right:0px ;
+}
+
+.navbar-nav {
+margin:0 15px 0 0;
+}
+
+.navbar-nav>li>a {
+    padding-top: 20%;
+    padding-bottom: 20%;
+}

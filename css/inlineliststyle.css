@@ -1,0 +1,104 @@
+@charaset"utf-8";
+
+html,body{
+  height:100%;
+  width:100%;
+  font-weight: 100;
+}
+.wrapper{
+  padding-top:5%;
+  width:300%;
+}
+ul li{
+	margin-top:0;
+}
+
+.spottitle{
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+}
+.inline{
+	/*width:15%;*/
+}
+.spottitle{
+	font-size:120%;
+	font-weight: 200;
+	padding-top: 2px;
+	padding-bottom:2px;
+	border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+}
+
+li.selectedspot .spottitle{
+	border-style:solid;
+	border-width: 3px 3px 0 3px;
+	border-radius: 3%;
+	border-color:#FA8072;
+	/*background-color: #FFFFFF;*/
+}
+li.selectedspot .abst{
+	border-style:solid;
+	border-width: 0 3px 0 3px;
+	border-radius: 0%;
+	border-color:#FA8072;
+}
+li.selectedspot .param{
+	border-style:solid;
+	border-width: 0 3px 3px 3px;
+	border-radius: 0%;
+	border-color:#FA8072;
+}
+
+/*選択されてないリストのスタイル*/
+li.unselectedspot .spottitle, li.unselectedspot .abst, li.unselectedspot .param{
+	opacity: 0.7;
+}
+
+.row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.nav{
+	width:100%;
+}
+
+/*スクリーンのサイズに合わせてリストのwidthを変更,表示されるリスト数を固定*/
+/*画面サイズ小:1カラム,中:2カラム, 大:3カラム*/
+@media screen and (max-width: 680px) {
+	.ajaxspotlist{
+		vertical-align: top;
+		padding-left: 20px;
+		padding-right: 20px;
+		display: inline-block !important;
+		width: 33%;
+	}
+}
+@media screen and (min-width: 680px) {
+	.ajaxspotlist{
+		vertical-align: top;
+		padding-left: 35px;
+		padding-right: 35px;
+		display: inline-block !important;
+		width: 16%;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.ajaxspotlist{
+		vertical-align: top;
+		padding-left: 20px;
+		padding-right: 20px;
+		display: inline-block !important;
+		width: 11%;
+	}
+}
+@media screen and (min-width: 1600px) {
+	.ajaxspotlist{
+		vertical-align: top;
+		padding-left: 20px;
+		padding-right: 20px;
+		display: inline-block !important;
+		width: 8%;
+	}
+}
+

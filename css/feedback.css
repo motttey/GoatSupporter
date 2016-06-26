@@ -1,0 +1,84 @@
+@charaset"utf-8";
+
+/*フィードバック用フォームの整列およびui, liについての定義*/
+ul.feedbackforms{
+    font-size:80%;
+    text-align : center ; 
+    font-family: "Myriad Pro";
+}
+
+form div{
+  padding-bottom:10px;
+}
+form.feedbackforms{
+  display:inline-block;
+  padding-bottom:5px;
+}
+
+li.feedback{
+  font-weight: 100;
+  font-size:20px;
+  padding-bottom: 3%;
+  padding-top:3%;
+}
+
+.feedbackforms label{
+  padding-left: 10px;
+}
+.feedbackforms button{
+  float:right;
+  margin-right:calc(60% - 200px);
+}
+.spot{
+  text-align:left;
+  right:0;
+  margin-left:calc(30% - 90px);
+}
+
+li.feedback{
+  width:100%;
+}
+
+li.feedback form:after{
+  content:'';
+  margin-left: 20px;
+}
+
+li.feedback div{
+  padding-bottom:15px;
+}
+
+form.review{
+  /*text-align: left;*/
+}
+
+@media screen and (max-width: 600px) {
+  button{
+    padding-bottom:0px;
+  }
+  label{
+    font-size: 16px;
+    padding-bottom: 5px;
+  }
+  li.feedback{
+    font-size:18px;
+    padding-bottom: 3%;
+  }
+  ul.feedbackforms{
+    margin-left: -20px;
+  } 
+  .feedbackforms button{
+    margin-right:calc(70% - 200px);
+  }
+  .spot{
+    margin-left:calc(30% - 90px);
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+  li.feedback{
+    font-size:16px;
+    padding-bottom: 3%;
+  }
+}

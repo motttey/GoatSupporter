@@ -1,0 +1,177 @@
+@charaset"utf-8";
+
+/*
+body{ background:#FFFACD; padding:0; color: #454545; font-family: "Myriad Pro", 'Noto Sans Japanese';}
+*/
+body{ background:#FFFACD; padding:0; color: #454545; 
+	  font-family: 'Noto Sans Japanese',Serif; font-weight:300;}
+a{
+	color:#FA8072;
+}
+a:hover{
+	color:#FFF;
+}
+a:focus {
+    color: #5D4037;
+    text-decoration: underline;
+}
+
+.inner p{
+	line-height: 36px;
+}
+
+#blogSection p{
+	font-size:18px;
+	font-weight: 100;
+}
+
+
+.vertline{
+    width: 1px;
+    /*margin: 3px auto;*/
+    height: 100%;
+    display: block;
+    background: #B5AFAF;
+}
+
+.mynav li a:hover{
+	background:#5D4037;
+	color:#FFFACD;
+}
+
+#ourServices p{
+	font-size:12px;
+	padding-left: :5%;
+	padding-right: 5%;
+}
+
+/*Styles For Lets Start Section*/
+#letsStartSection{text-align: center; padding:70px 0 70px 0;}
+#letsStartSection h1{ text-transform:uppercase; color:#000; padding:0;font-size:60px;}
+#letsStartSection p {
+    color: #000;
+    font-size: 19px;
+    line-height: 27px;
+	margin: 15px 0 100px;
+}
+
+.btn-lets{
+	font-size:24px;
+	background:#5D4037;
+	border-color:rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+	color:#FFF;
+	border:1px solid;
+	padding:15px 20px;
+	border-radius:10px;
+}
+.btn-lets:hover{
+	border-color:#5D4037;
+	background:#FFF;
+	color:#5D4037;
+	transition:all ease-in .5s;
+}
+
+
+/*Styles For Lets Start Section*/
+#ScreenShots{text-align: center; background: #fff; padding:70px 0 70px 0;}
+#ScreenShots h1{ text-transform:uppercase; color:#000; padding:0;font-size:60px;}
+#ScreenShots p {
+    color: #5E5E5E;
+    font-size: 14px;
+    line-height: 27px;
+	margin: 15px 0 100px;
+}
+#ScreenShots .screenshotdesc{
+	padding-top:30px;
+    font-size: 14px;
+	color: #5E5E5E;
+}
+#ScreenShots .screenshotimg{
+	padding-top:30px;
+	padding-left:50px;
+}
+
+/*meetourteamSectionのwrap*/
+#meetourteamSection{ padding:70px 0 ; background:#FA8072;  text-align: center; }
+
+#meetourteamSection .blockDtl{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+h2{
+	color: #5E5E5E;
+	padding:0;font-size:36px;
+	font-weight: 300;
+}
+.carousel-inner .line{
+	margin-bottom:20px;
+}
+.carousel-inner h1{ text-transform:uppercase; color:#000; padding:0;font-size:48px;}
+.carousel-inner #ScreenShots p {
+    color: #000;
+    font-size: 16px;
+    line-height: 27px;
+	margin: 15px 0 100px;
+}
+
+
+.btn-primary{
+	font-size:24px;
+	background:#FA8072;
+	border-color:rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+	border:1px solid;
+	padding:15px 20px;
+	border-radius:10px;
+}
+.btn-primary:hover{
+	background:#FFF;
+	border-color:#FA8072;
+	color:#FA8072;
+	transition:all ease-in .5s;
+}
+#contactSection .btn-primary{
+	font-size:24px;
+	background:#3b3b3b;
+	border-color:#fff;
+}
+#contactSection .btn-primary:hover{
+	background:#FFF;
+	border-color:#3b3b3b;
+	color:#3b3b3b;
+}
+
+#blogSection{
+	margin:0 0;
+	padding-top:25px;
+	padding-bottom:0px;
+}
+
+/*カルーセルリストに関するセレクタ*/
+.carousel-control{
+	color:#5D4037;
+}
+
+.carousel-control:hover{
+	color:#9d6c5c;
+}
+
+.carousel-indicators li {
+  background-color: #5D4037;
+}
+ 
+.carousel-indicators .active {
+  background-color: #5D4037;
+}
+
+#carouselSection {
+	padding-top:0;
+	padding-bottom:0;
+}
+.carousel-control.right, .carousel-control.left{
+	background-image: none;
+	background-color: transparent;
+	font-size: 50px;
+}
+#carouselSection .carousel-control.right,#carouselSection  .carousel-control.left{
+	visibility: hidden;
+}

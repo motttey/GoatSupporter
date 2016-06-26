@@ -1,0 +1,71 @@
+@charaset"utf-8";
+
+/*フォームの整列およびui, liについての定義*/
+.forms{
+    text-align : center ; 
+    font-family: "Myriad Pro";
+}
+.pastplan{
+    text-align : center ; 
+    font-family: "Myriad Pro";
+}
+
+.formtitle{
+  text-align:center; 
+  font-weight: 600;
+  font-size:48px;
+  color:#FA8072;
+  border-bottom: 2px solid #FA8072;
+}
+
+.formdesc{
+  text-align:center; 
+  text-decoration:underline; 
+  font-size:24px;
+}
+.selectplan, .selectplan li{
+  text-align: center;
+  font-size:24px;
+  padding-top: 5px;
+  padding-bottom:5px;
+}
+.selectplan img{
+  border-radius:50%;
+  width:5%;
+  min-width:40px;
+  max-width:80px;
+}
+.selectplan img:hover{
+  opacity: 0.5;
+}
+.selectplan label{
+  font-size:16px;
+}
+.selectplan a{
+  text-decoration:none;
+  border-style:none; 
+}
+.plan-images{
+  text-align:center;
+}
+
+label.forms{
+    text-align;right;
+    width: 40%;
+    font-size:20px;
+    float: left;
+}
+
+@media screen and (max-width: 800px) {
+  .formdesc{
+    font-size:20px;
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+  .formdesc{
+    font-size:18px;
+  }
+
+}

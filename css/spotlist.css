@@ -1,0 +1,121 @@
+@charaset"utf-8";
+/*スポットリストに関するセレクタ*/
+
+#naviwrapper {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#spotlists {
+  padding-top: 100px;
+}
+
+/*該当スポットがないときの表示*/
+.blanklist{
+  margin: auto;
+  height:100%;
+  width:100%;
+  /*background: #D7CCC8;*/
+  color:#636161;
+  text-align:center;
+}
+
+/*検索ボックス*/
+.searchbox{
+  width:100%;
+  text-align:right;
+  margin-left:5%;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-family: "Myriad Pro";
+  display:inline-block;
+}
+
+li .spotlist{
+  text-align: center;
+}
+
+.spotlist{
+  padding-left: 5%;
+  padding-right:5%;
+}
+
+#wrapper .spotlist{
+  /*width:300px;*/
+  padding-left: 1%;
+  padding-right:1%;
+}
+.spottitle{
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  /*margin-top:10px;*/
+  color:#ffffff;
+  background-color:#5D4037 ;
+}
+
+/*広告だけスタイルを変えるテスト*/
+li.adv .spottitle{
+    background:#FA8072;
+}
+#inline-list ul
+{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align:center;
+}
+
+/*予算の表示部分のセレクタ*/
+.budget{
+  font-size:16px;
+  /*margin-left:80%;*/
+  /*margin-top:10px;*/
+  font-weight:600;
+  text-align: left;
+  padding-top:5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  margin-left:5%;
+  /*text-align:right;*/
+  font-family: "Myriad Pro";
+
+  background:#5D4037;
+}
+
+.budgetval{
+  text-align: left;
+  font-size:120%;
+}
+
+.ajaxspotlist{
+  /*width:500px;*/
+  vertical-align:top;
+  padding-left: 5%;
+  padding-right:5%;
+  display: inline-block  !important;
+}
+
+form.form-budgetpm{
+  margin-left:5%;
+  border-style: none;
+  text-align: right;
+}
+
+@media screen and (min-width: 680px) {
+  form.form-budgetpm{
+    margin-left:30%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  form.form-budgetpm{
+    margin-left:40%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  form.form-budgetpm{
+    margin-left:50%;
+  }
+}

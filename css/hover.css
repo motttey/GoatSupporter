@@ -1,0 +1,22 @@
+
+/*
+.choices:hover{
+    background:#333333 !important;
+}
+*/
+
+li:visited{
+    background:#FA8072 !important; 
+}
+
+
+
+.choices:active{
+    background:#FA8072 !important;
+
+}
+
+.choices::-moz-selection {
+    background:#FA8072 !important;
+
+}

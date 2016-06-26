@@ -1,0 +1,27 @@
+/*ダッシュボードに関するセレクタ*/
+a.dashboard{
+  font-size:120%;
+  text-align:center;
+  font-weight:200;
+}
+
+.navigation-dashboard{
+  text-align:center;
+  color:#5D4037;
+}
+.navigation-dashboard p{
+  font-size:120px;
+}
+
+.navigation-dashboard img{
+  width:100px;
+  font-size:100%;
+  border-radius: 20%;
+  -webkit-border-radius: 20%;
+  -moz-border-radius: 20%;
+}
+
+@media screen and (max-width: 360px) {
+  a.dashboard{ font-size:80%;}
+  .navigation-dashboard p{ font-size:80px; }
+}

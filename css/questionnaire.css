@@ -1,0 +1,129 @@
+@charaset"utf-8";
+
+/*↓カルーセルリストに関するセレクタ↓*/
+label.choices{
+    margin-left: 40%;
+    width: 100%;
+    /*float: left;*/
+}
+
+.single-item{
+  height: 100%;
+  font-size: 24px;
+}
+
+.choices{
+  height:80px;
+  /*calc関数を用いて要素を中央揃え*/
+  padding-left:40% ; /*フォールバック*/
+  padding-left:-webkit-calc(50% - 120px) ;;
+  padding-left:calc(50% - 120px );
+  text-align:left;
+}
+#confirm{
+ text-align:center;
+}
+.questionnaire{
+    height:100%;
+    width:100%;
+    text-align:center;
+    color:#212121;
+}
+.single-item{
+    height:100% ;
+}
+.selector{
+    margin: 0 auto;
+    height:90% ;
+    /*text-align:left;*/
+}
+.question{
+  text-decoration: underline;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+
+li.confirm{
+  height:100px;
+  /*calc関数を用いて要素を中央揃え*/
+}
+
+/*カルーセルリストに関するセレクタ*/
+
+.carousel-indicators{
+    bottom:-20px;
+}
+.carousel-indicators li {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    border: 1px solid #5D4037;
+    background-color: #9d6c5c;
+    border-radius: 12px;
+}
+
+.carousel-indicators .active {
+    width: 20px;
+    height: 15px;
+    margin: 0px;
+    border: 1px solid #5D4037;
+    background-color: #ffffff;
+}
+
+.carousel-control {
+  width:5%;
+  height:20%;
+  font-size:100px;
+  color:#5D4037;
+}
+
+.carousel-control:hover{
+  color:#9d6c5c;
+}
+.carousel-control:visited{
+  color:#9d6c5c;
+}
+.carousel-control:active{
+  color:#9d6c5c;
+}
+.carousel-control:visited .carousel-control:link{
+  color:#9d6c5c;
+}
+
+.carousel-indicators:active {
+  /*background-color: #5D4037;*/
+}
+.carousel-control.right {
+  background-image:-webkit-linear-gradient(left, transparent 0px, rgba(0, 0, 0, 0) 100%);
+  background-image:-o-linear-gradient(left, transparent 0px, rgba(0, 0, 0, 0) 100%);
+  background-image:linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0) 100%);
+}
+
+.carousel-control.left {
+  background-image:-webkit-linear-gradient(left, transparent 0px, rgba(0, 0, 0, 0) 100%);
+  background-image:-o-linear-gradient(left, transparent 0px, rgba(0, 0, 0, 0) 100%);
+  background-image:linear-gradient(to right, transparent 0px, rgba(0, 0, 0, 0) 100%);
+}
+
+@media screen and (max-width: 800px) {
+   /* 表示領域が800px以上の場合に適用するスタイル */
+  .single-item{ font-size:40px; }
+  .question{font-size:20px;}
+
+}
+@media screen and (min-width: 800px) {
+   /* 表示領域が800px以上の場合に適用するスタイル */
+  .single-item{ font-size:24px; }
+}
+
+@media screen and (max-width: 360px) {
+  .carousel-control{ padding-top:50%; }
+  .choices{height:60px;}
+  .question{font-size:18px;}
+  }
+}
