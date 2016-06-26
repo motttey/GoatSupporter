@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head><title>デートアプリ</title>
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta charset = "utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!--<link rel="stylesheet" type="text/css" href="css/modal.css">-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!--
+<link rel="stylesheet" type="text/css" href="css/hover.css">
+<link rel="stylesheet" type="text/css" href="css/slick.css">
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+-->
+
+<!-- Using Font Awesome-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+
+<!-- ナビゲーション用の スタイル-->
+<link rel="stylesheet" type="text/css" href="css/navigation.css">
+<!-- View Tooltip (Using tooltip.js in Bootstrap)-->
+<script type="text/javascript" src="js/tooltip.js"></script>
+
+<!--画面サイズが500px以上のメディア(すまほ)ではツールチップ表示-->
+<script type="text/javascript">
+$(document).ready(function(){
+  if (window.matchMedia('screen and (min-width:800px)').matches) { 
+    //500px以上の処理
+  }else{
+      $('[data-toggle="tooltip"]').tooltip();
+  }
+});
+</script>
+
+<!-- ナビゲーションバーをfixed にする-->
+<script type="text/javascript">
+$(function() {
+    var nav = $('.navber');
+    //navの位置    
+    var navTop = nav.offset().top;
+    //スクロールするたびに実行
+    $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        //スクロール位置がnavの位置より下だったらクラスfixedを追加
+        if (winTop >= navTop) {
+            nav.addClass('fixed')
+        } else if (winTop <= navTop) {
+            nav.removeClass('fixed')
+        }
+    });
+});
+</script>
+<!-- ここまでナビゲーション用の スタイル-->
+
+<!-- For modal.js-->
+<script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript">
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+</script>
+
+</head>
+
+<body>
+
+<!-- ナビゲーション部分 -->
+<!-- TODO:選択されているページ部分の色を変更する-->
+<!-- Static navbar -->
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" 
+      data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+    </div>
+    <!-- ナビゲーションバー -->
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+      <li><a href="dashboard.html" class="nav-href" data-toggle="tooltip" data-placement="bottom" title="Dashboard">
+             <i class="fa fa-home"></i> 
+             <span class="navname">Dashboard</span>
+             <div class="tooltip">Dashboard</div>
+      </a></li>
+      <li><a href="form.html" class="nav-href" data-toggle="tooltip" data-placement="bottom" title="Form">
+             <i class="fa fa-pencil-square"></i>
+             <span class="navname">Form</span>
+             <div class="tooltip"><span>Form</span></div>
+      </a></li>
+      <li><a href="questionnaire.html" class="nav-href" data-toggle="tooltip" data-placement="bottom" title="Questionnaire">
+             <i class="fa fa-dot-circle-o"></i>
+             <span class="navname">Questionnaire</span>
+             <div class="tooltip"><span>Questionnaire</span></div>
+      </a></li>
+      <li><a href="list_modalpopup.html" class="nav-href" data-toggle="tooltip" data-placement="bottom" title="Spot List">
+             <i class="fa fa-list-alt"></i>
+             <span class="navname">Spot List</span>
+             <div class="tooltip"><span>Spot List</span></div>
+      </a></li>
+      <li ><a href="timeline.html" class="nav-href" data-toggle="tooltip" data-placement="bottom" title="Timeline">
+             <i class="fa fa-calendar"></i>
+             <span class="navname">Timeline</span>
+             <div class="tooltip"><span>Timeline</span></div>
+      </a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+ </div>
+<!-- ここまでナビゲーション部分 -->
+
+<!-- モーダルウィンドウ -->
+  
+	<div class="header">
+  <!--
+	リスト画面
+  <div class="line"></div>
+  -->
+  <!-- 残り予算額が入る -->
+  <div class="budget">
+    <span class="budgetval"><i class="fa fa-jpy"></i>残り予算額:</span>
+  </div>
+
+
+  </form>
+  </div>
+
+	</div>
+    <div class="container">
+        <ul class="nav nav-pills nav-stacked">
+          <!-- 必要であれば XMLとかでSemantic な マークアップにする-->
+
+          <li>
+
+              <div class="row infotitle">
+                <div class="col-xs-7 col-sm-8 col-md-9 col-lg-10">
+                  <!-- 新着情報の種類を表示(アイコンも添えるかもしれない)-->
+                  <span class="infotype"> [新着店舗] </span>
+                  通知名称 
+                </div>
+                <div class="col-xs-5 col-sm-4 col-md-3 col-lg-2">
+                  <button class="btn btn-salmon" data-toggle="modal" data-target="#Modal_1">Detail</button>
+                </div>
+              </div>
+              <div class="row infodatail abst"> 
+                <div class="col-xs-7 col-sm-8 col-md-9 col-lg-10">
+                <!-- 通知の種類を表す アイコンが入る-->
+                <div class="col-xs-5 col-sm-4 col-md-3 col-lg-2">
+                  <img src="img/dummy.png" class="list-image img-circle" alt="example">
+                </div>                  
+                <!-- 概要を取得して表示 -->
+                  概要(ex.表参道エリアに新規に20店舗が追加されました！) <br>
+                <!-- 通知の日付をDBから取得して表示-->
+                 <span class="infodate"> 2015-10-09 10:10:03 </span>
+                </div>
+
+              </div>
+
+
+              <div id="Modal_1" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <!-- スポット名称を入れる -->
+                      <h4 class="modal-title">
+                      <span class="infotype"> [新着店舗] </span>
+                      <span class="spotname">通知名称</span> </h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-xs-7 col-sm-8 col-md-9 col-lg-9">
+
+                          <div class="spot-description">詳細が入る
+                          </div>
+                          <br>
+
+                        </div>
+
+                        <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+                          <img src="img/dummy.png" class="list-image img-circle" alt="example">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <div class="row">
+                        <!-- 遷移先spotlistのphpを入れる-->
+                        <form class="forms" method = "post" action=".php">
+                          <!--
+                          <label class = "forms" for="datetime">開始時刻:</label>
+                          <input type="datetime" id="datetime" placeholder="Datetime" >
+                          -->
+                          <br>
+
+                        <!-- Goを押すことでその通知に対応するスポットリストの表示画面へ以降する  -->
+                          <input type="submit" class="btn btn-salmon" value="Go"> </input> 
+                          <input type="button" data-dismiss="modal" class="btn btn-close" value="close"></input>
+                        </form>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>          
+
+          </li>
+
+          <li>
+              
+              <div class="row infotitle">
+                <div class="col-xs-7 col-sm-8 col-md-9 col-lg-10">
+                  <!-- 新着情報の種類を表示(アイコンも添えるかもしれない)-->
+                  <span class="infotype"> [新着店舗] </span>
+                  通知名称 
+                </div>
+                <div class="col-xs-5 col-sm-4 col-md-3 col-lg-2">
+                  <button class="btn btn-salmon" data-toggle="modal" data-target="#Modal_1">Detail</button>
+                </div>
+              </div>
+              <div class="row infodatail abst"> 
+                <div class="col-xs-7 col-sm-8 col-md-9 col-lg-10">
+                <!-- 通知の種類を表す アイコンが入る-->
+                <div class="col-xs-5 col-sm-4 col-md-3 col-lg-2">
+                  <img src="img/dummy.png" class="list-image img-circle" alt="example">
+                </div>                  
+                <!-- 概要を取得して表示 -->
+                  概要(ex.表参道エリアに新規に20店舗が追加されました！) <br>
+                  <span class="infodate"> 2015-10-09 10:10:03 </span>
+                </div>
+
+              </div>
+
+
+              <div id="Modal_1" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <!-- スポット名称を入れる -->
+                      <h4 class="modal-title">
+                      <span class="infotype"> [新着店舗] </span>
+                      <span class="spotname">通知名称</span> </h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-xs-7 col-sm-8 col-md-9 col-lg-9">
+
+                          <div class="spot-description">詳細が入る
+                          </div>
+                          <br>
+
+                        </div>
+
+                        <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+                          <img src="img/dummy.png" class="list-image img-circle" alt="example">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <div class="row">
+                        <!-- 遷移先spotlistのphpを入れる-->
+                        <form class="forms" method = "post" action=".php">
+                          <!--
+                          <label class = "forms" for="datetime">開始時刻:</label>
+                          <input type="datetime" id="datetime" placeholder="Datetime" >
+                          -->
+                          <br>
+
+                        <!-- Goを押すことでその通知に対応するスポットリストの表示画面へ以降する  -->
+                          <input type="submit" class="btn btn-salmon" value="Go"> </input> 
+                          <input type="button" data-dismiss="modal" class="btn btn-close" value="close"></input>
+                        </form>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>          
+
+          </li>
+
+        </ul>
+
+        </div> 
+
+
+          <!-- ここから先はリスト表示のテストのためだけなので消してもよい
+          TODO:paddingなしで連続的かつ縦方向に通知を表示 -->
+          
+          
+
+</body>
+
+</html>

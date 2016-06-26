@@ -1,0 +1,174 @@
+{{each(i, spotlist) data}}
+  <div class="ajaxspotlist" id="list_${i}">
+    <div>${i+1}番目のスポットリスト</div>
+    <ul class="nav nav-pills nav-stacked">
+      {{if spotlist['spotdata'].length == 0}}
+        <div class="blanklist">
+          該当するスポットが存在しません。<br>
+          <p style ="font-size: 120px;">
+            <i class="fa fa-exclamation-triangle"></i>
+          </p>
+        </div>
+      {{else}}
+        <!-- 必要であれば XMLとかでSemantic な マークアップにする-->
+        {{each(j, spot) spotlist['spotdata']}}
+          <li {{if i < data.length-1}}{{if [spot['spotid'], spot['openid'], spot['priceid']].toString() == selected[i]}}class="selectedspot"{{else}}class="unselectedspot"{{/if}}{{/if}}>
+            <!-- ユーザに選択されたスポットだと{{if}}{{/if}}内に埋め込んだ文字列が表示される -->
+            <div class="row spottitle">
+              <div class="col-xs-7 col-sm-8 col-md-8 col-lg-8">
+                <!-- スポット名を取得して表示 -->
+                <p class="title">${spot['name']}</p>
+              </div>
+              <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
+                <button class="btn btn-salmon" data-toggle="modal" data-target="#Modal_${i}_${j}">Detail</button>
+              </div>
+            </div>
+            <div class="row spotdatail abst">
+              <div class="col-xs-7 col-sm-8 col-md-9 col-lg-9">
+                <!-- 概要を取得して表示 -->
+                ${spot['description'].slice(0, 15)}
+                {{if spot['description'].length > 15}}
+                  {{if spot['description'].length > 30}}
+                    ${spot['description'].slice(15, 29)}...
+                  {{else}}
+                    ${spot['description'].slice(15)}
+                  {{/if}}
+                {{/if}}
+              </div>
+              <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+                <img src="img/{{if !spot['imgpath']}}dummy.png{{else}}${spot['imgpath']}{{/if}}" class="list-image img-circle" alt="example">
+              </div>
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+              </div>
+            </div>
+            <!-- 詳細表示 -->
+            <div class="row spotdatail param">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="line">
+                </div>
+                <!-- エリア・価格帯・タイプを取得して表示-->
+                <!-- スポットタイプのアイコンは種類に寄って変わる-->
+                <span class="area"><i class="fa fa-flag"></i>${spot['area']}</span> /
+                <span class="type">
+                  {{if Math.floor(spot['categorycode']/100) == 1}}
+                    <i class="fa fa-ticket"></i>
+                  {{else Math.floor(spot['categorycode']/100)== 2}}
+                    <i class="fa fa-calendar-check-o"></i>
+                  {{else Math.floor(spot['categorycode']) == 352}}
+                    <i class="fa fa-coffee"></i>
+                  {{else Math.floor(spot['categorycode']/100) == 3}}
+                    <i class="fa fa fa-cutlery"></i>
+                  {{else Math.floor(spot['categorycode']/100) == 4}}
+                    <i class="fa fa fa-glass"></i>
+                  {{else Math.floor(spot['categorycode']/100) == 5}}
+                    <i class="fa fa-tree"></i>
+                  {{else Math.floor(spot['categorycode']/100) == 6}}
+                    <i class="fa fa-shopping-cart"></i>
+                  {{else spot['categorycode'] == 704}}
+                    <i class="fa fa-bus"></i>
+                  {{else spot['categorycode'] == 706}}
+                    <i class="fa fa-train"></i>
+                  {{else spot['categorycode'] == 707}}
+                    <i class="fa fa-subway "></i>
+                  {{else Math.floor(spot['categorycode']/100) == 7}}
+                    <i class="fa fa-suitcase"></i>
+                  {{else}}
+                    <i class="fa fa-coffee"></i>
+                  {{/if}}
+                  ${spot['category']}
+                </span><br>
+                <span class="budgettype" {{if spot['price'] > budget}}style="color:#FF0000"{{/if}}><i class="fa fa-jpy"></i>${spot['price']}</span> /
+                <span class="timetospent"><i class="fa fa-hourglass"></i>${time2hour(spot['reqtime'])}</span>
+              </div>
+            </div>
+            <!-- 遷移元ボタンのtargetと一致するようなユニークなidを付加する-->
+            <div id="Modal_${i}_${j}" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <!-- スポット名称を入れる -->
+                    <h4 class="modal-title"><span class="spotname">${spot['name']}</span> </h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-xs-7 col-sm-8 col-md-9 col-lg-9">
+                        <div class="spot-description">
+                          ${spot['description']}
+                        </div>
+                        <!-- エリア・価格帯・タイプを取得して表示-->
+                        <span class= "address"><i class="fa fa-map-marker"></i>${spot['address']}</span>
+                        <span class= "phonnum"><i class="fa fa-phone"></i>${spot['tel']}</span> <br>
+                        <!-- 連絡先がHPの場合 -->
+                        <!--
+                        <span class= "url"><i class="fa fa-laptop"></i>${spot['url']}</span> <br>
+                        -->
+                        <!-- データベースより出力されるパラメータに従った種類のFont Awesomeのアイコンを表示する-->
+                        <!-- スポットタイプのアイコンはスポットの種類によって変わる-->
+                        <span class="area"><i class="fa fa-flag"></i>${spot['area']}</span> /
+                        <span class="type">
+                          {{if Math.floor(spot['categorycode']/100) == 1}}
+                            <i class="fa fa-ticket"></i>
+                          {{else Math.floor(spot['categorycode']/100)== 2}}
+                            <i class="fa fa-calendar-check-o"></i>
+                          {{else Math.floor(spot['categorycode']) == 352}}
+                            <i class="fa fa-coffee"></i>
+                          {{else Math.floor(spot['categorycode']/100) == 3}}
+                            <i class="fa fa fa-cutlery"></i>
+                          {{else Math.floor(spot['categorycode']/100) == 4}}
+                            <i class="fa fa fa-glass"></i>
+                          {{else Math.floor(spot['categorycode']/100) == 5}}
+                            <i class="fa fa-tree"></i>
+                          {{else Math.floor(spot['categorycode']/100) == 6}}
+                            <i class="fa fa-shopping-cart"></i>
+                          {{else spot['categorycode'] == 704}}
+                            <i class="fa fa-bus"></i>
+                          {{else spot['categorycode'] == 706}}
+                            <i class="fa fa-train"></i>
+                          {{else spot['categorycode'] == 707}}
+                            <i class="fa fa-subway "></i>
+                          {{else Math.floor(spot['categorycode']/100) == 7}}
+                            <i class="fa fa-suitcase"></i>
+                          {{else}}
+                            <i class="fa fa-coffee"></i>
+                          {{/if}}
+                          ${spot['category']}
+                        </span><br>
+                        <span class="budgettype"><i class="fa fa-jpy"></i>${spot['price']}</span>
+                          <!-- 営業開始時刻と終了時刻をDatetime型とかで取得して表示
+                          TODO:曜日も将来的に付加する
+                          -->
+                          <br>
+                          <span class="businessh"><i class="fa fa-clock-o"></i>
+                          <span class="starttime">${timeFormat(spot['open'])} 〜 </span>
+                          <span class="endtime">${timeFormat(spot['close'])}</span>
+                        </span> /
+                        <span class="timetospent"><i class="fa fa-hourglass"></i>${time2hour(spot['reqtime'])}</span>
+                      </div>
+                      <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+                        <img src="img/{{if !spot['imgpath']}}dummy.png{{else}}${spot['imgpath']}{{/if}}" class="list-image img-circle" alt="example">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="row">
+                        <!-- form actionに遷移先のphp入れればできそう-->
+                        <form class="forms" method="post" action="javascript: loadText(${i+1}, ${j});">
+                          <label class="forms" for="datetime">開始時刻:</label>
+                          <input id="datetime_${i}_${j}" type="datetime-local" placeholder="Datetime" value="${spotlist['start']}">
+                          <br>
+                          <!-- TODO:Add後,そのイベントをどの時間帯に加えるのかを表示する-->
+                          <input type="submit" class="btn btn-salmon" value="add"> </input>
+                          <input type="button" data-dismiss="modal" class="btn btn-close" value="close"></input>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      {{/if}}
+    </ul>
+  </div>
+{{/each}}

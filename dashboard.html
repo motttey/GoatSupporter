@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head><title>デートアプリ</title>
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta charset = "utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<!--<link rel="stylesheet" type="text/css" href="css/slick.css">
+<link rel="stylesheet" type="text/css" href="css/slick-theme.css"> -->
+<!--<link rel="stylesheet" type="text/css" href="css/hover.css">-->
+
+<!-- Using Font Awesome-->
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+<script type="text/javascript" src="js/jquery.min.js"  ></script>
+<!-- <script type="text/javascript" src="js/slick.min.js"></script> -->
+
+<!-- ナビゲーション用の スタイル-->
+<link rel="stylesheet" type="text/css" href="css/navigation.css">
+<!-- View Tooltip (Using tooltip.js in Bootstrap)-->
+<script type="text/javascript" src="js/tooltip.js"></script>
+<!--画面サイズが500px以上のメディア(すまほ)ではツールチップ表示-->
+<script type="text/javascript">
+$(document).ready(function(){
+  if (window.matchMedia('screen and (min-width:800px)').matches) {
+    //500px以上の処理
+  }else{
+      $('[data-toggle="tooltip"]').tooltip();
+  }
+});
+</script>
+
+<!-- ナビゲーションバーをfixed にする-->
+<script type="text/javascript">
+$(function() {
+    var nav = $('.navber');
+    //navの位置
+    var navTop = nav.offset().top;
+    //スクロールするたびに実行
+    $(window).scroll(function () {
+        var winTop = $(this).scrollTop();
+        //スクロール位置がnavの位置より下だったらクラスfixedを追加
+        if (winTop >= navTop) {
+            nav.addClass('fixed')
+        } else if (winTop <= navTop) {
+            nav.removeClass('fixed')
+        }
+    });
+});
+</script>
+<!-- ここまでナビゲーション用の スタイル-->
+
+
+<!-- オーバーレイの表示 (クリックで消える)-->
+<script type="text/javascript">
+$(function() {
+     $("#btn").click(function() {
+           $("#overlay").fadeIn();　
+ });
+     $("#overlay").click(function() {
+           $("#overlay").fadeOut();　
+ });
+     return false;
+});
+</script>
+</head>
+
+<body>
+
+  <!-- ナビゲーション部分 -->
+  <!-- TODO:選択されているページ部分の色を変更する-->
+  <!-- Static navbar -->
+  <div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle"
+      data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+    </div>
+    <!-- ナビゲーションバー -->
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+      <li class="active"><a href="dashboard.html" class="nav-href" data-toggle="tooltip" data-placement="bottom"  title="Dashboard">
+             <i class="fa fa-home"></i>
+             <span class="navname">Dashboard</span>
+             <div class="tooltip">Dashboard</div>
+      </a></li>
+      <li><a href="form.php" class="nav-href" data-toggle="tooltip" data-placement="bottom"  title="Form">
+             <i class="fa fa-pencil-square"></i>
+             <span class="navname">Form</span>
+             <div class="tooltip"><span>Form</span></div>
+      </a></li>
+      <li><a href="questionnaire.php" class="nav-href" data-toggle="tooltip" data-placement="bottom"  title="Questionnaire">
+             <i class="fa fa-dot-circle-o"></i>
+             <span class="navname">Questionnaire</span>
+             <div class="tooltip"><span>Questionnaire</span></div>
+      </a></li>
+      <li><a href="spotlist.php" class="nav-href" data-toggle="tooltip" data-placement="bottom"  title="Spot List">
+             <i class="fa fa-list-alt"></i>
+             <span class="navname">Spot List</span>
+             <div class="tooltip"><span>Spot List</span></div>
+      </a></li>
+      <li><a href="timeline.php" class="nav-href" data-toggle="tooltip" data-placement="bottom"  title="Timeline">
+             <i class="fa fa-calendar"></i>
+             <span class="navname">Timeline</span>
+             <div class="tooltip"><span>Timeline</span></div>
+      </a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+  <!-- ここまでナビゲーション部分 -->
+
+		<div class="header">
+			<!--ホーム画面-->
+		</div>
+    <!-- 表示するナビゲーションの数は4~6個 一行あたり2列とする 6個の場合は2*3でもよい-->
+  <div class="container">
+    <!--オーバーレイ(コーチングガイド)-->
+<!--
+    <div id="overlay">
+      <p id="overlay-text">最初にユーザ情報入力,アンケート入力を行ってください</p>
+    </div>
+-->
+    <!-- 各モードへのリンクをはる -->
+    <!-- 現状ではFont Awesomeを使ってるけど画像にするかもしれない-->
+    <div class="row dashboard">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="form.php" class="dashboard">
+            <div class="navigation-dashboard">
+              <p style ="font-size: 120px;">
+                <i class="fa fa-pencil-square"></i>
+              </p>
+            <!--<img src="img/dummy.png" class="list-image" alt="example">-->
+            </div>
+            <br>ユーザ入力
+            </a><br>
+          </li>
+        </ui>
+      </div>
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="questionnaire.php" class="dashboard">
+            <div class="navigation-dashboard">
+              <p style ="font-size: 120px;">
+                <i class="fa fa-dot-circle-o"></i>
+              </p>
+            <!--<img src="img/dummy.png" class="list-image" alt="example">-->
+            </div>
+            <br>アンケート
+            </a><br>
+          </li>
+        </ui>
+      </div>
+    </div>
+
+    <div class="row dashboard">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="spotlist.php" class="dashboard">
+            <div class="navigation-dashboard">
+              <p style ="font-size: 120px;">
+                <i class="fa fa fa-list-alt"></i>
+              </p>
+            <!--<img src="img/dummy.png" class="list-image" alt="example">-->
+            </div>
+            <br>スポット一覧
+            </a><br>
+          </li>
+        </ui>
+      </div>
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="timeline.php" class="dashboard">
+            <div class="navigation-dashboard">
+              <p style ="font-size: 120px;">
+                <i class="fa fa-calendar"></i>
+              </p>
+              <!--<img src="img/dummy.png" class="list-image" alt="example">-->
+              </div>
+            <br>タイムライン
+            </a><br>
+          </li>
+        </ui>
+      </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+User-Agent:*
+Disallow:/questionnaire.html
+Disallow:/list_modalpopup.html
+Disallow:/timeline.html
+Disallow:/form.html
+
+Sitemap:http://11planner.hacked.jp/dashboard.html
